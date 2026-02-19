@@ -93,8 +93,9 @@
                                 <div class="select is-fullwidth">
                                     <select>
                                         <option>Selecione...</option>
-                                        <option>Rock</option>
-                                        <option>Pop</option>
+                                        {% for genero in generos %}
+                                        <option>{{ genero.nome }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>

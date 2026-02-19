@@ -10,10 +10,11 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home", methods=["GET"])
 def pagina_principal(): 
-
+    #recuperando as musicas
     musicas = recuperar_musicas()
+    #recuperando os generos
     generos = recuperar_generos()
-
+    #mostrando a página
     return render_template("principal.html", musicas = musicas, generos = generos)
     
 
@@ -21,8 +22,10 @@ def pagina_principal():
 def pagina_admin():
     #recuperando as musicas
     musicas = recuperar_musicas()
+    #recuperando os generos
+    generos = recuperar_generos()
     #mostrando a página
-    return render_template("administracao.html", musicas = musicas)
+    return render_template("administracao.html", musicas = musicas, generos = generos)
     
 
 if __name__ == "__main__":
