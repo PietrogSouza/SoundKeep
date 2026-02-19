@@ -120,20 +120,22 @@
                         <th class="has-text-right px-5">Ações</th>
                     </tr>
                 </thead>
+                
                 <tbody>
+                    {%for musica in musicas%}
                     <tr>
                         <td class="has-text-centered has-text-link is-family-monospace">1</td>
                         <td style="width: 80px;">
                             <figure class="image is-48x48">
-                                <img src="https://via.placeholder.com/48" class="is-rounded" style="object-fit: cover;">
+                                <img src="{{ musica.url_imagem }}" class="is-rounded" style="object-fit: cover;">
                             </figure>
                         </td>
                         <td>
-                            <strong class="has-text-white">Título da Música</strong><br>
-                            <small class="has-text-grey">Nome do Cantor</small>
+                            <strong class="has-text-white">{{ musica.nome }}</strong><br>
+                            <small class="has-text-grey">{{ musica.cantor }}</small>
                         </td>
-                        <td class="is-family-monospace has-text-centered">04:12</td>
-                        <td><span class="tag is-dark">Rock</span></td>
+                        <td class="is-family-monospace has-text-centered">{{ musica.duracao}}</td>
+                        <td><span class="tag is-dark">{{ musica.categoria }}</span></td>
                         <td class="has-text-centered">
                             <span class="tag is-success is-light">ATIVO</span>
                         </td>
@@ -145,9 +147,11 @@
                                 <button class="button is-small is-danger is-light" title="Excluir">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
+                                
                             </div>
                         </td>
                     </tr>
+                    {%endfor%}
                 </tbody>
             </table>
         </div>

@@ -1,6 +1,13 @@
 USE soundkeep;
 
-INSERT INTO `soundkeep`.`música`
+INSERT INTO `soundkeep`.`genero` (`nome`, `icone`, `cor`) 
+VALUES 
+("Rock", "", "red"),
+("Pop", "", "blue"),
+("Pagode", "", "yellow");
+
+
+INSERT INTO `soundkeep`.`musica`
 (`cantor`,
 `duracao`,
 `nome`,
@@ -15,7 +22,7 @@ VALUES
 
 
 
-INSERT INTO `soundkeep`.`música`
+INSERT INTO `soundkeep`.`musica`
 (`cantor`,
 `duracao`,
 `nome`,
