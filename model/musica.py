@@ -50,3 +50,6 @@ def adicionar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, gener
         print(erro)
         return False
     
+
+
+    

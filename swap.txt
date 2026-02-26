@@ -1,0 +1,10 @@
+def excluir_musica();
+    """
+    Exclui música do bando de dados e do app
+    """
+
+    conexao, curso = conectar()
+
+    cursor.execute("""
+                    
+                   """)

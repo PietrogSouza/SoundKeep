@@ -32,5 +32,5 @@ VALUES
 ("System of a down",
 "00:03:30",
 "Chop Suey",
-"https://i.scdn.co/image/ab67616d00001e0207bc7d2a745636c356b4d0aa",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0ueRJXSpAr2Z5rMYaIubJe1bHuigl2GNGeA&s",
 "Rock");
