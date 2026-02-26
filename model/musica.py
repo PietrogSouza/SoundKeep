@@ -7,7 +7,7 @@ def recuperar_musicas():
     #executando a consulta
     cursor.execute("""
 
-            SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero FROM musica;
+            SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica;
                     
                    """)
     
@@ -51,5 +51,39 @@ def adicionar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, gener
         return False
     
 
+def excluir_musica(codigo:int):
+    """
+    Exclui música do banco de dados e do app
+    """
+
+    conexao, cursor = conectar()
+
+    cursor.execute("""
+                    
+                    DELETE FROM musica WHERE codigo = %s
+
+                   """,
+                   [codigo]
+                   )
+
+    
+    conexao.commit()
+    conexao.close()
+
+
+    def ativar_musica(codigo:int, status:bool):
+        
+        conexao, cursor = conectar()
+
+        cursor.execute("""
+
+                        UPDATE musica SET ativo = %s
+                        WHERE codigo = %s
+
+                       """)
+        
+    conexao.commit()
+    conexao.close()
+        
 
     

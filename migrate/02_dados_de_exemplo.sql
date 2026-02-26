@@ -4,7 +4,9 @@ INSERT INTO `soundkeep`.`genero` (`nome`, `icone`, `cor`)
 VALUES 
 ("Rock", "", "red"),
 ("Pop", "", "blue"),
-("Pagode", "", "yellow");
+("Pagode", "", "yellow"),
+("Sertanejo", "", "green"),
+("MPB", "", "purple");
 
 
 INSERT INTO `soundkeep`.`musica`

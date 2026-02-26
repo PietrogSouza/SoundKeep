@@ -8,3 +8,16 @@ def excluir_musica();
     cursor.execute("""
                     
                    """)
+
+url musicas:
+Amiga da minha mulher:
+https://upload.wikimedia.org/wikipedia/pt/6/6d/Capa_de_M%C3%BAsicas_para_Churrasco%2C_Vol._1.jpg
+
+Chop Suey:
+https://f4.bcbits.com/img/a2136479367_16.jpg
+
+Camisa 10:
+https://i.ytimg.com/vi/r0PREky3Jyg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD6Zkut_THRm8ozoUtZaxdxuJDMRw
+
+Borboletas:
+https://upload.wikimedia.org/wikipedia/pt/4/47/Victor_e_leo_borboletas.jpg

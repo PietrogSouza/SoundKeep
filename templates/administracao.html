@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" style="background-color: #0a0a0a;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +9,69 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Força o fundo escuro em toda a página, independente do conteúdo */
-        html, body { 
-            background-color: #0a0a0a !important; 
-            color: #fff; 
+        html,
+        body {
+            background-color: #0a0a0a !important;
+            color: #fff;
             min-height: 100vh;
             margin: 0;
         }
-        
-        body { padding: 40px 10px; }
-        
-        .box { background-color: #1a1a1a; border: 1px solid #2d2d2d; color: #fff; }
-        .input, .select select { background-color: #2d2d2d; border-color: #3d3d3d; color: #fff; }
-        .input:focus, .select select:focus { border-color: #485fc7; }
-        
+
+        body {
+            padding: 40px 10px;
+        }
+
+        .box {
+            background-color: #1a1a1a;
+            border: 1px solid #2d2d2d;
+            color: #fff;
+        }
+
+        .input,
+        .select select {
+            background-color: #2d2d2d;
+            border-color: #3d3d3d;
+            color: #fff;
+        }
+
+        .input:focus,
+        .select select:focus {
+            border-color: #485fc7;
+        }
+
         /* Ajustes da Tabela */
-        .table { background-color: transparent; color: #fff; }
-        .table thead th { color: #7a7a7a; border-bottom-color: #2d2d2d; text-transform: uppercase; font-size: 0.75rem; }
-        .table td { border-bottom-color: #2d2d2d; vertical-align: middle; }
-        tr:hover { background-color: #242424 !important; }
-        
-        .title, .label { color: #fff !important; }
-        .subtitle { color: #485fc7 !important; }
+        .table {
+            background-color: transparent;
+            color: #fff;
+        }
+
+        .table thead th {
+            color: #7a7a7a;
+            border-bottom-color: #2d2d2d;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        .table td {
+            border-bottom-color: #2d2d2d;
+            vertical-align: middle;
+        }
+
+        tr:hover {
+            background-color: #242424 !important;
+        }
+
+        .title,
+        .label {
+            color: #fff !important;
+        }
+
+        .subtitle {
+            color: #485fc7 !important;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -121,11 +162,11 @@
                         <th class="has-text-right px-5">Ações</th>
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     {%for musica in musicas%}
                     <tr>
-                        <td class="has-text-centered has-text-link is-family-monospace">1</td>
+                        <td class="has-text-centered has-text-link is-family-monospace">{{ musica.codigo }}</td>
                         <td style="width: 80px;">
                             <figure class="image is-48x48">
                                 <img src="{{ musica.url_imagem }}" class="is-rounded" style="object-fit: cover;">
@@ -136,19 +177,24 @@
                             <small class="has-text-grey">{{ musica.cantor }}</small>
                         </td>
                         <td class="is-family-monospace has-text-centered">{{ musica.duracao}}</td>
-                        <td><span class="tag is-dark">{{ musica.categoria }}</span></td>
+                        <td><span class="tag is-dark">{{ musica.nome_genero }}</span></td>
                         <td class="has-text-centered">
+                            {% if musica.ativo %}
                             <span class="tag is-success is-light">ATIVO</span>
+                            {% else %}
+                            <span class="tag is-danger is-light">DESATIVADO</span>
+                            {% endif %}
                         </td>
                         <td class="has-text-right px-5">
                             <div class="buttons is-right">
                                 <button class="button is-small is-warning is-light" title="Desativar">
                                     <i class="fa-solid fa-eye-slash"></i>
                                 </button>
-                                <button class="button is-small is-danger is-light" title="Excluir">
+                                <a href="/musica/delete/{{musica.codigo}}" class="button is-small is-danger is-light"
+                                    title="Excluir">
                                     <i class="fa-solid fa-trash"></i>
-                                </button>
-                                
+                                    </button>
+
                             </div>
                         </td>
                     </tr>
@@ -159,4 +205,5 @@
     </div>
 
 </body>
+
 </html>
