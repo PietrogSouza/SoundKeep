@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, request
 import mysql.connector
 from model.genero import recuperar_generos
-from model.musica import adicionar_musica, recuperar_musicas, excluir_musica
+from model.musica import adicionar_musica, recuperar_musicas, excluir_musica, ativar_musica
 
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route("/home", methods=["GET"])
 def pagina_principal(): 
     #recuperando as musicas
-    musicas = recuperar_musicas()
+    musicas = recuperar_musicas(True)
     #recuperando os generos
     generos = recuperar_generos()
     #mostrando a página
@@ -45,13 +45,15 @@ def deletar_musica(codigo):
     excluir_musica(codigo)
     return redirect("/admin")
 
-@app.route("/musica/ativar/<codigo><ativo>")
-    
-    
-        
 
 
-    
+@app.route("/musica/ativar/<codigo>/<status>")
+def mudar_status_musica(codigo, status):
+    ativar_musica(codigo, status)
+    return redirect("/admin")
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
