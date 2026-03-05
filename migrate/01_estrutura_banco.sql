@@ -19,6 +19,11 @@ CREATE TABLE IF NOT EXISTS musica (
  CONSTRAINT fk_musica_genero FOREIGN KEY (nome_genero) REFERENCES genero (nome)
 );
 
+CREATE TABLE IF NOT EXISTS cadastro(
+ usuario VARCHAR(100) NOT NULL PRIMARY KEY,
+ senha VARCHAR(100),
+ admin BOOL DEFAULT 0
+);
 
 
 
