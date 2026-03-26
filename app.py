@@ -1,12 +1,13 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, session
 import mysql.connector
 from model.genero import recuperar_generos
 from model.musica import adicionar_musica, recuperar_musicas, excluir_musica, ativar_musica
 from model.cadastro import adicionar_usuario
-
+from model.login import verificar_usuario
 
 app = Flask(__name__)
 
+app.secret_key = "123590"
 
 
 @app.route("/")
@@ -22,6 +23,9 @@ def pagina_principal():
 
 @app.route("/admin")
 def pagina_admin():
+    if "usuario_logado" not in session:
+        return redirect("/login")
+    
     #recuperando as musicas
     musicas = recuperar_musicas()
     #recuperando os generos
@@ -67,12 +71,24 @@ def cadastro_usuario():
     adicionar_usuario(usuario, senha)
     return redirect("/home")
 
-@app.route("/login" methods=["GET"])
+@app.route("/login", methods=["GET"])
 def pagina_login():
+    if "usuario_logado" in session:
+        return redirect("/admin")
+    
     return render_template("login.html")
 
 @app.route("/usuario/login", methods=["POST"])
 def login_usuario():
+    login = request.form.get("usuario")
+    senha = request.form.get("senha")
+    usuario = verificar_usuario(login, senha)
+
+    if usuario != None:
+        session["usuario_logado"] = usuario
+        return redirect("/admin")
+    else:
+        return redirect("/login")
 
     
 
