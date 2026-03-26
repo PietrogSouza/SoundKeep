@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session, flash
 import mysql.connector
 from model.genero import recuperar_generos
 from model.musica import adicionar_musica, recuperar_musicas, excluir_musica, ativar_musica
@@ -64,9 +64,8 @@ def pagina_cadastro():
 
 @app.route("/usuario/cadastro", methods=["POST"])
 def cadastro_usuario():
-
-    usuario = request.form.get("usuario_cadastro")
-    senha = request.form.get("senha_cadastro")
+    usuario = request.form.get("input_usuario")
+    senha = request.form.get("input_senha")
 
     adicionar_usuario(usuario, senha)
     return redirect("/home")
@@ -75,7 +74,7 @@ def cadastro_usuario():
 def pagina_login():
     if "usuario_logado" in session:
         return redirect("/admin")
-    
+
     return render_template("login.html")
 
 @app.route("/usuario/login", methods=["POST"])
@@ -86,9 +85,16 @@ def login_usuario():
 
     if usuario != None:
         session["usuario_logado"] = usuario
+        flash(f"Seja bem-vindo, {usuario.nome}")
         return redirect("/admin")
     else:
+        flash("Usuário ou senha inválida!", "danger")
         return redirect("/login")
+    
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
     
 
